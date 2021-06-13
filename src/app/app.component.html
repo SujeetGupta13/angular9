@@ -1,2 +1,8 @@
-<h1 class="bg-primary">Welcome to OneConversion</h1>
+<h1 class="bg-primary">Welcome to {{title}}</h1>
+<app-tasks></app-tasks>
+<h1>List of completed Tasks</h1>
+<app-completed-tasks></app-completed-tasks>
+<button (click)="readMe()" [ngStyle]='{color:colorName}'>Button</button> <!-- here button click event is event attached to Component Directive -->
+
+<div *ngIf='showMsg' [ngStyle]='{color:"red"}'>Show this message from If true Statement</div>
 <router-outlet></router-outlet>
