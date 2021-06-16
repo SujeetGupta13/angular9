@@ -8,8 +8,12 @@ import { HighlightPipe } from './highlight.pipe';
 import { HoverEffectPipe } from './hover-effect.pipe';
 import { TasksComponent } from './tasks/tasks.component';
 import { TodoModule } from './todo/todo.module';
-import { CommonModule } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ProductsComponent } from './products/products.component';
+import { ProductViewComponent } from './product-view/product-view.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
+import { ProductIdComponent } from './product-id/product-id.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     HighlightPipe,
     HoverEffectPipe,
-    TasksComponent
+    TasksComponent,
+    ProductsComponent,
+    ProductViewComponent,
+    ProductEditComponent,
+    ProductIdComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +34,9 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {provide:LocationStrategy, useClass:PathLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
