@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-id',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductIdComponent implements OnInit {
 
-  constructor() { }
+  queryParams = '';
+  searchKeyword = ''
+  constructor(private activatedRoute : ActivatedRoute) { 
+    this.activatedRoute.params.subscribe( data => {
+      this.searchKeyword =data.id;
+    })
+  }
 
   ngOnInit(): void {
   }

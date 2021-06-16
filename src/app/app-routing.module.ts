@@ -10,15 +10,23 @@ import { SearchComponent } from './search/search.component';
 import { TasksComponent } from './tasks/tasks.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'product-edit', pathMatch: 'full'},
+  { path: '', redirectTo: 'products', pathMatch: 'full'},
   { path: 'learning', component: TasksComponent},
   { path: 'products', component: ProductsComponent},
   { path: 'product-view', component: ProductViewComponent},
   { path: 'product-edit', component: ProductEditComponent},
+  { path: 'products',
+    children: [
+      { path: 'view', component: ProductViewComponent},
+      { path: 'edit', component: ProductEditComponent},
+      { path: 'view/:id', component: ProductIdComponent}
+    ]},
   { path: 'product/10', component: ProductIdComponent}, //this value 10 shud be parameterized
   { path: 'order/:id/:id2', component: OrderViewComponent},
   { path: 'search', component: SearchComponent},
-  { path: '**', component: PageNotFoundComponent}
+  { path: '**', component: PageNotFoundComponent},
+
+  
 ];
 
 @NgModule({
