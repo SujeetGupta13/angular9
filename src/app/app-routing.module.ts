@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuardGuard } from './admin-guard.guard';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { OrderViewComponent } from './order-view/order-view.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
@@ -24,7 +26,10 @@ const routes: Routes = [
   { path: 'product/10', component: ProductIdComponent}, //this value 10 shud be parameterized
   { path: 'order/:id/:id2', component: OrderViewComponent},
   { path: 'search', component: SearchComponent},
-  { path: '**', component: PageNotFoundComponent},
+  { path: 'orders', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) },
+  
+  { path: 'admin', component: AdminHomeComponent, canActivate: [AdminGuardGuard]},
+  { path: '**', component: PageNotFoundComponent}
 
   
 ];
