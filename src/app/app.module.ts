@@ -8,6 +8,8 @@ import { HighlightPipe } from './highlight.pipe';
 import { HoverEffectPipe } from './hover-effect.pipe';
 import { TasksComponent } from './tasks/tasks.component';
 import { TodoModule } from './todo/todo.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { TodoModule } from './todo/todo.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TodoModule
+    TodoModule,
+    CommonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

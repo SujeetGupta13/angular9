@@ -3,6 +3,140 @@
 <h1>List of completed Tasks</h1>
 <app-completed-tasks></app-completed-tasks>
 <button (click)="readMe()" [ngStyle]='{color:colorName}'>Button</button> <!-- here button click event is event attached to Component Directive -->
+<!-- ngIf -->
+<h1>ngIf Example</h1>
+<div *ngIf="showNgIfMsg" [ngStyle]='{color:"red"}'>Show this message from If true Statement</div>
+<!-- ngIfElse -->
+<div *ngIf="showNgIfElseMsg; else showElseMsg" > Show If Message if True</div>
+<ng-template #showElseMsg> Show Else Message if False</ng-template>
+<!-- ngIf with then and else -->
+<br>
+<div *ngIf="showNgIfThenElseMsg; then showThenMsg; else showElseMsg2"></div>
+<ng-template #showThenMsg>Show Then Message</ng-template>
+<ng-template #showElseMsg2>Show Else Message</ng-template>
+<!-- ngSwitch -->
+<br>
+<h1>ngSwitch Example</h1>
+<div [ngSwitch]="switchValue">
+    <div *ngSwitchCase="1">Value passed is: 1</div>
+    <div *ngSwitchCase="2">Value passed is: 2</div>
+    <div *ngSwitchCase="3">Value passed is: 3</div>
+    <div *ngSwitchCase="4">Value passed is: 4</div>
+    <div *ngSwitchCase="'Four'">Value passed is: Four</div>
+    <div *ngSwitchDefault>This is the default Value </div>
+</div>
+<!-- ngFor -->
+<br>
+<h1>ngFor Example</h1>
+ <table class="table"> 
+     <tr>
+         <th> User Id</th>
+         <th> First Name</th>
+         <th> Index</th>
+         <th> First</th>
+         <th> Last</th>
+         <th> Even</th>
+         <th> Odd</th>
+     </tr>
+     <tr *ngFor="let user of users; index as i; first as f; last as l; even as e; odd as o">
+         <td>{{ user.userId }}</td>
+         <td>{{ user.firstName }}</td>
+         <td>{{ i }}</td>
+         <td>{{ f }}</td>
+         <td>{{ l }}</td>
+         <td>{{ e }}</td>
+         <td>{{ o }}</td>
+    </tr>  
+ </table>
+<!-- ngFor -->
+<br>
+<h1>ngStyle Example</h1>
+<div [ngStyle]="{'color':'red'}">
+    Static Styling!!
+</div>
+<div [ngStyle]="{'color':colorName, 'background-color':'#ddd'}">
+    Dynamic Styling!!
+</div>
+<!-- ngClass -->
+ <br>
+ <h1>ngClass Example</h1>
+ <div [ngClass]="'one'">
+   Static ngClass
+ </div>
+ <div [ngClass]="[className, 'one']">
+    Dynamic ngClass
+  </div>
+  <div [ngClass]="{'one':false, 'two':true}">
+    Dynamic ngClass with expression
+  </div>
 
-<div *ngIf='showMsg' [ngStyle]='{color:"red"}'>Show this message from If true Statement</div>
-<router-outlet></router-outlet>
+<!-- Interpolation -->
+ <br>
+ <h1>Interpolation Example</h1>
+ <div>{{ subTitle }}</div>
+ <div>{{ epNum }}</div>
+ <div>{{user.userId}}</div>
+ <div>{{user.userName}} {{user.status}}</div>
+ <!-- Property Binding -->
+ <br>
+ <h1> Property Binding Example</h1>
+ <div [ngStyle]="{color:colorVal}">This is Property Binding Example</div>
+ <p [innerHTML]='subTitle'></p>
+ <div [ngClass]="clsName">Setting calss property via property binbding</div>
+ <div [ngClass]="'c1'">Setting calss property via property binbding</div>
+ <input [placeholder]="placeHolderVal">
+ <!-- Attribute Binding -->
+ <br>
+ <h6> Attribute(Custom property) Binding Example. in below eaxmple, href is 
+   element default property. and next two are custom property or attribute with 
+   the help of 'attr.' .
+ </h6>
+ <a [href]="hrefVal" [attr.updateLink]='updatedLink' [attr.data-link]='updatedLink'>Google</a>
+ <!-- Event Binding -->
+ <br>
+ <h6>Event Binding Example</h6>
+ <button (click)="showAlert(10);">Click Me</button>
+ <input (focus)="consoleLog();">
+  <!-- Two way data Binding To USe ngModel I had to import FormsModel-->
+  <br>
+  <h6>Two way data Binding Example</h6>
+  <input [(ngModel)]="firstname" />
+  <button (click)="readFirstName()">Read FirstName</button>
+  <div>{{ firstname }}</div>
+
+  <!-- Pipes-->
+  <br>
+  <h6>Pipes Example</h6>
+  <div>
+    {{ user2.firstName | uppercase}}, {{user2.lastName | lowercase}}, {{user2.DOB | date}}
+    , {{user2.DOB | date:'MMMM dd'}}, {{user2.salary | currency:'EUR'}},{{user2.salary | currency:'EUR':'code'}}
+    ,{{user2 | json}}
+  </div>
+  <!--Parameterized Pipes-->
+  <br>
+  <h6>Parameterized Pipes Example</h6>
+  <div>
+    {{user2.DOB | date:'short'}}, {{user2.DOB | date:'long'}},{{user2.DOB | date:'longDate'}},{{user2.DOB | date:'MMMM dd yy'}},
+     {{user2.salary | currency:'EUR'}},{{user2.salary | currency:'EUR':'code'}},{{user2.salary | currency:'EUR':'EUR':'3.0-1'}}
+  </div>
+  <!--Chaining Pipes-->
+  <br>
+  <h6>Chaining Pipes Example</h6>
+  <div>
+    {{user2.DOB | date:'MMMM' | uppercase}}
+  </div>
+  <!--Custom Pipes-->
+  <br>
+  <h6>Custom Pipes Example</h6>
+  <!-- <div [innerHTML]>
+    {{user3.city | highlight:user3.city}}
+  </div> -->
+  <!-- <div [innerHTML]="user3.city | highlight:user3.city">
+  </div> -->
+  <ul>
+    <li *ngFor="let user of users3">
+      <div [innerHTML]="user.city | highlight:user.city"></div>
+    </li>
+  </ul>
+  <!-- try hands on frmtng phn no., hglght srch rslt kywrd-->
+ <router-outlet></router-outlet>
