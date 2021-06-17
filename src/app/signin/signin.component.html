@@ -2,15 +2,16 @@
 <form #signInForm="ngForm" (ngSubmit)="loginUser(signInForm);">
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="emailAddressField" ngModel>
-      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="emailAddressField" email ngModel required #emailAddressField="ngModel"> <!--#emailAddressField="ngModel" this is required for Custome field vaidation-->
+      <small class="form-text text-muted" *ngIf="emailAddressField.touched && !emailAddressField.valid">Enter Email Address</small>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" name="passwordField" ngModel>
+      <input type="password" class="form-control" id="exampleInputPassword1" name="passwordField" ngModel required #passwordField="ngModel">
+      <small class="form-text text-muted" *ngIf="passwordField.touched && !passwordField.valid">Enter Password</small>
     </div>
     <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1" name="termsField" ngModel>
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" name="termsField" required ngModel>
       <label class="form-check-label" for="exampleCheck1">Agree to terms</label>
     </div>
     <div class="form-group">
@@ -22,9 +23,9 @@
         <label class="form-check-label" for="exampleCheck1">Female</label>
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+        <label for="exampleInputEmail1">Notes</label>
         <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="notesField" ngModel>
         </textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!signInForm.valid">Submit</button>
   </form>
