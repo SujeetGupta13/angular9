@@ -30,8 +30,8 @@ export class CheckoutComponent implements OnInit {
 
    postData(){
      console.log(this.checkoutForm);
-     console.log(this.checkoutForm.value);
-     console.log(this.checkoutForm.value.emailAddr);
+     console.log(this.checkoutForm.value);// this will give All formControl of forms
+     console.log(this.checkoutForm.value.emailAddr); //this will give emailAddr formControl of forms
    }
   ngOnInit(): void {
   }
