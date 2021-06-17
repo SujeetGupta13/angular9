@@ -34,6 +34,16 @@ export class CheckoutComponent implements OnInit {
      console.log(this.checkoutForm.value.emailAddr); //this will give emailAddr formControl of forms
    }
   ngOnInit(): void {
+    /*
+    this.checkoutForm.setValue({ //using this method set all the form field
+      emailAddr: 'test@test.com',
+      quantity: 10,
+      terms: true
+    })
+    */
+    this.checkoutForm.patchValue({ //using this method set we can omit few form field
+      emailAddr: 'test@test.com'     
+    })
   }
 
 }
