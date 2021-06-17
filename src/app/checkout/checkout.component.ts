@@ -58,9 +58,6 @@ export class CheckoutComponent implements OnInit {
 
    }
 
-   removeItem(id){
-
-   }
    postData(){
      console.log(this.checkoutForm);
      console.log(this.checkoutForm.value);// this will give All formControl of forms
@@ -100,7 +97,43 @@ export class CheckoutComponent implements OnInit {
      this.checkoutForm.statusChanges.subscribe( data =>{
       console.log(data);
     })
+
+    console.log(this.checkoutForm.get('items')?.value.length);
+    console.log(this.checkoutForm.get('items')?.value);
+    let item = this.checkoutForm.get('items')?.value;
+    console.log(item[0].itemName);
+
+    this.checkoutForm.get('items')?.setValue([{
+            itemId: ['1'],
+            itemName: ['Learning'],
+            itemDesc: ['Angular 9'],
+            itemDone: ['', Validators.requiredTrue],
+    }])
+
+    //this.checkoutForm.get('items')?.reset();
   }
+
+  getItems(){
+    return this.checkoutForm.get('items') as FormArray;
+  }
+  //a new ellemet shud be added
+  addNewItem(){
+    const itemLength = this.itemsArr.length;
+    const newItem = this.formBuilder.group({
+      itemId: [ itemLength + 1 ],
+      itemName: [''],
+      itemDesc: [''],
+      itemDone: ['', Validators.requiredTrue],
+    })
+    this.getItems().push(newItem);
+  }
+
+  
+  removeItem(itemId){
+    console.log('remove item clicked');
+    console.log(itemId);
+    this.getItems().removeAt(itemId);
+    }
 
   resetForm(){
     this.checkoutForm.reset();// this will reset entire form data
