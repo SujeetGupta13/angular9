@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout',
@@ -9,6 +9,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class CheckoutComponent implements OnInit {
 
   checkoutForm: FormGroup; //step #3 give same form group name as in the template
+  itemsArr = FormArray;
+  valueChangedTracked = ''; 
   constructor(private formBuilder: FormBuilder) {
     /*
     this.checkoutForm = formBuilder.group( //Building the from using formbuilder
@@ -45,6 +47,17 @@ export class CheckoutComponent implements OnInit {
     */
     this.checkoutForm.patchValue({ //using this method set we can omit few form field
       emailAddr: 'test@test.com'     
+    })
+
+    //provide the form control name for whcih w ewant yo read the value on change
+    this.checkoutForm.get('emailAddr')?.valueChanges.subscribe( data => {
+      console.log(data);
+      this.valueChangedTracked = data;
+    })
+
+    //the diff is --whenecer there is any change in any form control
+    this.checkoutForm.valueChanges.subscribe( data => {
+      console.log(data);
     })
   }
 
