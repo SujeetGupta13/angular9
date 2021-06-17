@@ -21,15 +21,46 @@ export class CheckoutComponent implements OnInit {
     })
     */
 
+    /*
     this.checkoutForm = formBuilder.group( //Building the from using formbuilder
       {
       emailAddr: ['', [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(10)]], 
       quantity: ['', Validators.required],  
       terms:  ['', Validators.requiredTrue]
       })
+      */
+
+      this.checkoutForm = formBuilder.group( //Building the from using formbuilder
+        {
+        emailAddr: ['', [Validators.required, 
+                        Validators.email,  
+                        Validators.minLength(5), 
+                        Validators.maxLength(10)]], 
+        quantity: ['', Validators.required],  
+        terms:  ['', Validators.requiredTrue],
+        /*
+        items: this.formBuilder.array([
+          new FormControl('Anguar'),
+          new FormControl('React')
+        ])
+        */
+        items: this.formBuilder.array([
+          this.formBuilder.group({
+            itemId: ['1'],
+            itemName: ['ARC'],
+            itemDesc: ['tutorial'],
+            itemDone: ['', Validators.requiredTrue],
+          })
+        ])
+        
+        })
+  
 
    }
 
+   removeItem(id){
+
+   }
    postData(){
      console.log(this.checkoutForm);
      console.log(this.checkoutForm.value);// this will give All formControl of forms
