@@ -58,6 +58,16 @@ export class CheckoutComponent implements OnInit {
     //the diff is --whenecer there is any change in any form control
     this.checkoutForm.valueChanges.subscribe( data => {
       console.log(data);
+    });
+
+  //Learning to use statusChange on FormControl
+     this.checkoutForm.get('emailAddr')?.statusChanges.subscribe( data =>{
+       console.log(data);
+     })
+
+     //dyanmically we acn capture teh satte of the validation of the entire form
+     this.checkoutForm.statusChanges.subscribe( data =>{
+      console.log(data);
     })
   }
 
