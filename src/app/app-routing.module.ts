@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuardGuard } from './admin-guard.guard';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 import { OrderViewComponent } from './order-view/order-view.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
   
   { path: 'admin', component: AdminHomeComponent, canActivate: [AdminGuardGuard]},
   { path: 'signin', component: SigninComponent},
+  { path: 'checkout', component: CheckoutComponent},
   { path: '**', component: PageNotFoundComponent}
 
   

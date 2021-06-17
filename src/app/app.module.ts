@@ -9,7 +9,7 @@ import { HoverEffectPipe } from './hover-effect.pipe';
 import { TasksComponent } from './tasks/tasks.component';
 import { TodoModule } from './todo/todo.module';
 import { CommonModule, HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // step #1 import formsModule
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // step #1 import formsModule
 import { ProductsComponent } from './products/products.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
@@ -19,6 +19,7 @@ import { SearchComponent } from './search/search.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { SigninComponent } from './signin/signin.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -35,14 +36,16 @@ import { SigninComponent } from './signin/signin.component';
     SearchComponent,
     PageNotFoundComponent,
     AdminHomeComponent,
-    SigninComponent
+    SigninComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule, 
     AppRoutingModule,
     TodoModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule //Step #1
   ],
   providers: [
     {provide:LocationStrategy, useClass:PathLocationStrategy}
