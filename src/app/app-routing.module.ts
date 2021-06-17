@@ -9,6 +9,7 @@ import { ProductIdComponent } from './product-id/product-id.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductsComponent } from './products/products.component';
 import { SearchComponent } from './search/search.component';
+import { SigninComponent } from './signin/signin.component';
 import { TasksComponent } from './tasks/tasks.component';
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'orders', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule) },
   
   { path: 'admin', component: AdminHomeComponent, canActivate: [AdminGuardGuard]},
+  { path: 'signin', component: SigninComponent},
   { path: '**', component: PageNotFoundComponent}
 
   

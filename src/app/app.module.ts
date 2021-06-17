@@ -9,7 +9,7 @@ import { HoverEffectPipe } from './hover-effect.pipe';
 import { TasksComponent } from './tasks/tasks.component';
 import { TodoModule } from './todo/todo.module';
 import { CommonModule, HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; // step #1 import formsModule
 import { ProductsComponent } from './products/products.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
@@ -18,6 +18,7 @@ import { OrderViewComponent } from './order-view/order-view.component';
 import { SearchComponent } from './search/search.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { SigninComponent } from './signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -33,10 +34,11 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
     OrderViewComponent,
     SearchComponent,
     PageNotFoundComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    SigninComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, 
     AppRoutingModule,
     TodoModule,
     CommonModule,
