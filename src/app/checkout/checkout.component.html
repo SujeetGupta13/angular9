@@ -5,12 +5,17 @@
           <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
             <input type="email" class="form-control" id="inputEmail3" formControlName="emailAddr">
+            <span *ngIf="checkoutForm.get('emailAddr').touched && checkoutForm.get('emailAddr').hasError('required')">Enter Email Address</span>
+            <span *ngIf="checkoutForm.get('emailAddr').touched && checkoutForm.get('emailAddr').hasError('email')">Enter Valid Email Address</span>
+            <span *ngIf="checkoutForm.get('emailAddr').touched && checkoutForm.get('emailAddr').hasError('minlength')">Min 5 letter required</span>
+            <span *ngIf="checkoutForm.get('emailAddr').touched && checkoutForm.get('emailAddr').hasError('maxlength')">Max 10 letter required</span>
           </div>
         </div>
         <div class="form-group row">
           <label for="inputPassword3" class="col-sm-2 col-form-label">Quantity</label>
           <div class="col-sm-10">
             <input type="password" class="form-control" id="inputPassword3" formControlName="quantity">
+            <span *ngIf="checkoutForm.get('quantity').touched && checkoutForm.get('quantity').hasError('required')">Enter Quantity</span>
           </div>
         </div>
         <div class="form-group row">
@@ -25,7 +30,7 @@
         </div>
         <div class="form-group row">
           <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Checkout</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!checkoutForm.valid">Checkout</button>
           </div>
         </div>
       </form>
