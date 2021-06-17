@@ -32,6 +32,8 @@ export class CheckoutComponent implements OnInit {
      console.log(this.checkoutForm);
      console.log(this.checkoutForm.value);// this will give All formControl of forms
      console.log(this.checkoutForm.value.emailAddr); //this will give emailAddr formControl of forms
+
+     this.resetForm();
    }
   ngOnInit(): void {
     /*
@@ -44,6 +46,10 @@ export class CheckoutComponent implements OnInit {
     this.checkoutForm.patchValue({ //using this method set we can omit few form field
       emailAddr: 'test@test.com'     
     })
+  }
+
+  resetForm(){
+    this.checkoutForm.reset();// this will reset entire form data
   }
 
 }

@@ -31,6 +31,7 @@
         <div class="form-group row">
           <div class="col-sm-10">
             <button type="submit" class="btn btn-primary" [disabled]="!checkoutForm.valid">Checkout</button>
+            <button type="submit" class="btn btn-link" (click)="resetForm();">Clear</button>
           </div>
         </div>
       </form>
